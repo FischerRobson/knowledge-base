@@ -1,7 +1,7 @@
 # Docker
 
 <p align="center">
-  <img src=".github/docker.png" />
+  <img src="assets/docker.png" />
 </p>
 
 ## Sobre Docker
@@ -11,7 +11,7 @@ a execução de processos. As ferramentas que o Docker traz são basicamente uma
 administração de containers, baseado originalmente no LXC.
 
 <p align="center">
-  <img src=".github/docker-engine.png" />
+  <img src="assets/docker-engine.png" />
 </p>
 
 Alguns isolamentos possíveis:
@@ -36,7 +36,7 @@ Enquanto máquinas virtuais levam minutos para iniciar, os container podem ser i
 muito menos recursos.
 
 <p align="center">
-  <img src=".github/container_vs_virtual-machine.png" />
+  <img src="assets/container_vs_virtual-machine.png" />
 </p>
 
 Todas as imagens são linux, apesar do host poder ser qualquer SO que use ou emule um kernel
