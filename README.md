@@ -20,3 +20,4 @@ This repository is a central of many courses and other knowledges from videos, a
 
 - Divide in EN/PT-BR sections
 - Translate content to other language (PT-BR -> EN / EN -> PT-BR)
+- Add books section
