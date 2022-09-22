@@ -1,12 +1,10 @@
-# advanced-typescript
-
-## Custom types
+## Custom Types
 
 ```ts
 type CustomType = number | string; // union type
 ```
 
-## Intersection types
+## Intersection Yypes
 
 Combine objects type, or intersection between custom types.
 
@@ -60,7 +58,7 @@ type Numeric = number | boolean;
 type Universal = Combinable & Numeric; // number
 ```
 
-## Type guards
+## Type Guards
 
 Infer the type during runtime.
 
@@ -122,7 +120,7 @@ function useVehicle(vehicle: Vehicle) {
 
 ```
 
-## Discriminated union
+## Discriminated Union
 
 Has a common property in all interfaces
 
@@ -148,7 +146,7 @@ function moveAnimal(animal: Animal) {
   ret
 ```
 
-## Type casting
+## Type Casting
 
 ```ts
 const userInputElement = <HTMLInputElement>document.getElementById('user-input'); // getElementById return type HTMLElement
@@ -160,4 +158,56 @@ Casting while access properties:
 
 ```ts
 (userInputElement as HTMLInputElement).value
+```
+
+## Index Properties
+
+
+```ts
+interface ErrorContainer {
+  id: string; // cant be a number cause index
+  [key: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  id: '1',
+  email: 'invalid email'
+}
+
+const errorBagTwo: ErrorContainer = {
+  id: '1',
+  username: 'invalid username'
+}
+```
+
+## Function Overloadings
+
+```ts
+function add(a: Combinable, b: Combinable) {
+  if (typeof a === 'string' || typeof b === 'string') {
+    return a.toString() + b.toString();
+  }
+
+  return a + b;
+}
+
+const result = add(1, 2) as number; // the type is Combinable
+const result2 = add('Robson', ' Fischer') as string;
+```
+
+Using overloading, you dont need to cast type:
+
+```ts
+function add(a: number, b: number): number
+function add(a: string, b: string): string
+function add(a: Combinable, b: Combinable) {
+  if (typeof a === 'string' || typeof b === 'string') {
+    return a.toString() + b.toString();
+  }
+
+  return a + b;
+}
+
+const result = add(1, 2);
+const result2 = add('Robson', ' Fischer');
 ```
