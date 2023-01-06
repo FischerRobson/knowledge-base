@@ -23,3 +23,4 @@ ssh-add ~/.ssh/id_ed25519
 
 After this, add the value from ssh key in github ssh keys, like this:
 
+![ssh-keys](https://github.com/FischerRobson/knowledge-base/blob/main/en/errors/images/ssh-key-error.png)
