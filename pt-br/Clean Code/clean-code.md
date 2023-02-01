@@ -77,3 +77,41 @@ function Button() {
 - Early returns x else;
 
 - Evitar condicionais aninhadas;
+
+- Desestruturar objetos que sao recebidos em funções:
+
+```js
+function createUser(data) {
+  const { name, email, password } = data;
+  
+  userRepository.create({
+    name,
+    email,
+    password
+  })
+}
+```
+
+- No JS prefira receber objetos como parametro de funções, e devolva como objeto;
+
+- Não use números mágicos, crie constantes ou deixe o cálculo explícito:
+
+```js
+const 30_DAYS = 1000 * 60 * 60 * 24 * 30;
+
+setTimeout(() => {}, 30_DAYS);
+```
+
+- Coloque a unidade de medida no nome de váriaveis (preços, datas, etc);
+
+- Comentários não são documentação;
+
+- Evite Syntatic Sugars (features especificas de uma linguagem): 
+
+```js
+const numberAsString = "123";
+
+const number = +numberAsString; // Syntatic Sugar
+
+const number = Number(numberAsString);
+```
