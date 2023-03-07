@@ -75,3 +75,22 @@ how to recover, data is read in order from low to high offset within each partit
 Transform bytes in objects/data, used in key and value of the message;
 
 ![clipboard.png](./images/deserializer.png)
+
+## Consumers Group
+
+Each consumer within a group reads from exclusive partitions.
+
+![clipboard.png](./images/group.png)
+
+## Consumers Offset
+
+Kafka stores the offsets at which a consumer group has been reading.
+When a consumer in a group has processed data recevied from kafka, it should be periodically commiting the offsets,
+if a consumer dies, it will be able to read back from where it left.
+The 3 delivery semantics for commit are:
+- At least once (usually preferred)
+- At most once
+- Exactly once
+
+
+![clipboard.png](./images/commit.png)
