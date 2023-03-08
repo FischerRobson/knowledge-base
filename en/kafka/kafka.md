@@ -85,12 +85,49 @@ Each consumer within a group reads from exclusive partitions.
 ## Consumers Offset
 
 Kafka stores the offsets at which a consumer group has been reading.
-When a consumer in a group has processed data recevied from kafka, it should be periodically commiting the offsets,
+When a consumer in a group has processed data received from kafka, it should be periodically committing the offsets,
 if a consumer dies, it will be able to read back from where it left.
 The 3 delivery semantics for commit are:
 - At least once (usually preferred)
 - At most once
 - Exactly once
 
-
 ![clipboard.png](./images/commit.png)
+
+## Brokers
+
+A kafka cluster is composed of multiple brokers (servers), each broker is identified with its id, each broker contains 
+certain topic partitions, after connecting to any broker you will be connected to the entire cluster.
+
+Every kafka broker is also called bootstrap server.
+
+![clipboard.png](./images/brokers.png)
+
+![clipboard.png](./images/cluster.png)
+## Topic Replication
+
+Topics should have a replication factor (between 2 and 3).
+
+At any time only one broker can be a leader for a given partition.
+Producers can only send data to the broker that is leader of a partition, the other brokers
+will replicate the data. Therefore, each partition has one leader and multiple ISR (in-sync replica).
+
+Producers can only write to the leader broker for a partition, consumers by default will read from the leader. 
+
+![clipboard.png](./images/replication.png)
+
+### Consumers Replica Fetching
+
+Its possible to configure consumers to read from the closest replica.
+
+![clipboard.png](./images/replica.png)
+
+## Producer Acknowledgements (acks)
+
+acks = 0: Producer won't wait for acknowledgement (possible data loss)
+acks = 1: Producer will wait for leader acknowledgement (limited data loss)
+acks = all: Leader + replicas acknowledgement (no data loss)
+
+## Topic Durability
+
+For a topic replication factor 3, topic durability can withstand 2 brokers loss.
