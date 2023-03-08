@@ -10,14 +10,16 @@ This repository is a central of many courses and other knowledges from videos, a
 * Kubernetes
 * Jenkins
 * noSQL
+* Kafka
 
 ## Best Pratices
 
 * SOLID
 * Design Patterns
+* Clean Code
 
 ## Next updates:
 
-- Divide in EN/PT-BR sections
-- Translate content to other language (PT-BR -> EN / EN -> PT-BR)
-- Add books section
+* [x]  Divide in EN/PT-BR sections
+* [ ] Translate content to other language (PT-BR -> EN / EN -> PT-BR)
+* [ ]  Add books section
