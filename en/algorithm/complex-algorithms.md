@@ -47,7 +47,7 @@ $$
 F2(N) = 1
 $$
 
-![Captura de Tela 2023-10-27 às 14.16.57.png](Complex%20Algorithms%20424846f6c1d847ee8c71f828685e472c/Captura_de_Tela_2023-10-27_as_14.16.57.png)
+![functions](./functions.png)
 
 # Algorithms complexities comparison
 
