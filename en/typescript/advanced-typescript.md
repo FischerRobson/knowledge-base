@@ -211,3 +211,125 @@ function add(a: Combinable, b: Combinable) {
 const result = add(1, 2);
 const result2 = add('Robson', ' Fischer');
 ```
+
+## No Optionals
+
+Instead of: 
+
+```ts
+type ServerData = {
+  status: 'Success' | 'Error' | 'Loading'
+  data?: { id: string; message: string }
+  error: Error
+}
+```
+
+Use:
+
+```ts
+type ServerData = {
+  status: 'Loading'
+} | {
+  status: 'Success'
+  data: { id: string; message: string }
+} | {
+  status: 'Error'
+  error: Error
+}
+```
+
+## Generics
+
+A basic example:
+
+```ts
+function getFirstElement<ElementType>(array: ElementType[]) {
+  return array[0]
+}
+
+const numbers = [1,2,3]
+const firstNum = getFirstElement(numbers)
+```
+Typescript default uses generics implicit.
+
+```ts
+type ApiResponse<Data> = {
+  data: Data,
+  isError: boolean
+}
+
+// default status type
+type ApiResponse<Data = {status: number}> = {
+  data: Data,
+  isError: boolean
+}
+
+// Data must be object
+type ApiResponse<Data extends Object> = {
+  data: Data,
+  isError: boolean
+}
+```
+
+Now using this:
+
+```ts
+
+type UserData = { name: string; age: number }
+type BlogData = { title: string }
+
+const userResponse : ApiResponse<UserData> = {
+  data: { name: 'john doe', age: 28 },
+  isError: false
+}
+
+const blogReponse : ApiResponse<BlogData> = {
+  data: { title: 'The title'},
+  isError: false
+}
+```
+
+## Predicate
+
+If you are checking the type of an object, for example:
+
+
+```ts
+type User = {
+  id: string
+  name: string
+}
+
+type Employee = User & {
+  email: string
+}
+
+const people: (User | Employee)[] = []
+
+people.forEach(people => {
+  if("email" in people) {
+    console.log('My email is:' + people.email)
+  } else {
+    console.log('user:' + people.name)
+  }
+})
+```
+
+But if you want to extract the check for a function:
+
+```ts
+people.forEach(people => {
+  if(isEmployee(people)) {
+    console.log('My email is:' + people.email)
+  } else {
+    console.log('user:' + people.name)
+  }
+})
+
+
+// must type return, or return type will be just boolean
+function isEmployee(person: User | Employee): person is Employee {
+  return "email" in people
+}
+
+```
